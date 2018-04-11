@@ -1,7 +1,7 @@
 <?php 
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Blog extends CI_Controller {
+	class Artikel_Controller extends CI_Controller {
 
 	    public function __construct(){
 	    	parent::__construct();
@@ -19,7 +19,7 @@
         {
             $id = $this->uri->segment(3);
             $x['data'] = $this->Artikel_Model->get_news_by_id($id);
-            $this->load->view('ArtikelId_View', $x);
+            $this->load->view('ArticelId_View', $x);
         }
 
         public function insert_news(){
@@ -31,7 +31,7 @@
                $this->form_validation->set_rules('content', 'Content', 'required');
 
                if ($this->form_validation->run() == FALSE) {
-                   $this->load->view('CreateArticel_New');
+                   $this->load->view('CreateArticle_New');
                } else {
                     $config['upload_path'] = 'assets/img/';
                     $config['allowed_types'] = 'jpg|png|jpeg';
@@ -55,7 +55,7 @@
                         
                         $this->Artikel_Model->create_news($data['input']);
                         
-                        redirect('HomeCTRL/news');
+                        redirect('Artikel_Controller/index');
                     }
                }
         }
@@ -73,7 +73,7 @@
             $data['show_article'] = $this->Artikel_Model->get_news_by_id($id);
             //Jika validasi belum berjalam
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('EditArticel_View',$data);
+                $this->load->view('EditArticle_View',$data);
             } else {
                 $config['upload_path'] = 'assets/img/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
@@ -96,7 +96,7 @@
                     );
                     $this->Artikel_Model->edit_news($id, $data['input']);
                     //kembali ke home
-                    redirect('HomeCTRL/news');
+                    redirect('Artikel_Controller/index');
                 }
             }   
         }
@@ -104,7 +104,7 @@
         public function delete_news(){
             $id = $this->uri->segment(3);
             $this->Artikel_Model->delete_news($id);
-            redirect('HomeCTRL/news','refresh');
+            redirect('Artikel_Controller/index','refresh');
         }
 
 	}

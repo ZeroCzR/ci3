@@ -38,43 +38,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <section id="contact">
   <div class="container">
+    <?php 
+      echo form_open_multipart('Artikel_Controller/edit_news/'.$show_article['id']);
+    ?>
     <div class="well well-sm">
       <h3><strong>News</strong></h3>
     </div>
-    <a href="<?php echo base_url().'Artikel_Controller/insert_news'?>" class="btn btn-danger">Add News</a>
-  
-  <div class="row">
-      <?php
-        function limit_words($string, $word_limit){
-          $words = explode(" ", $string);
-          return implode(" ", array_splice($words, 0, $word_limit));
-        }
-
-        foreach ($data -> result_array() as $i) :
-          $id       = $i['id'];
-          $judul    = $i['title'];
-          $author   = $i['author'];
-          $content  = $i['content'];
-          $datepost = $i['datepost'];
-          $image    = $i['image'];
-        
-      ?>
-    <div class="col-sm-6 col-md-3"><br>
-      <div class="thumbnail">
-        <img src="<?php echo base_url().'assets/img/'.$image;?>" alt="Gambar" width="150px" height="150px">
-        <div class="caption">
-          <h3><?php echo $judul; ?></h3>
-          <p>
-            <?php echo limit_words($content,20);?> <br>
-            <a href="<?php echo base_url().'Artikel_Controller/view/'.$id;?>">Selengkapnya ...</a>
-          </p>
-          <p><a href="<?php echo site_url('Artikel_Controller/edit_news/'.$i['id'])?>" class="btn btn-primary" role="button">Edit</a> <a href="<?php echo site_url('Artikel_Controller/delete_news/'.$i['id']) ?>" class="btn btn-default" role="button">Hapus</a></p>
-        </div>
-      </div>
-    </div>
-    <?php endforeach;?>
+        <label>Title</label>
+        <input type="text" class="form-control" value="<?php echo $show_article['title']?>" name="title"><br>
+        <label>Author</label>
+        <input type="text" class="form-control" value="<?php echo $show_article['author']?>" name="author"><br>
+        <label>Content</label>
+        <textarea name="content" class="form-control" style="height:300px;">
+          <?php echo $show_article['content']?>
+        </textarea><br>
+        <label>You can upload file by type: .jpg .jpeg .png</label>
+        <input type="file" name="image" required=""><br>
+        <input type="submit" class="btn btn-primary" value="Posting"><hr>
+        <?php
+          if(validation_errors()){
+            echo "<div class='alert alert-danger'>
+                <strong>Danger!</strong>".validation_errors()."
+                </div>"
+                ;
+          }
+        ?>
   </div>
-
 </section>
 </div>
 </body>

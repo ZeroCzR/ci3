@@ -34,49 +34,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
     </div>
 </nav>
+
 <div class="container">
-
-<section id="contact">
-  <div class="container">
-    <div class="well well-sm">
-      <h3><strong>News</strong></h3>
-    </div>
-    <a href="<?php echo base_url().'Artikel_Controller/insert_news'?>" class="btn btn-danger">Add News</a>
-  
-  <div class="row">
-      <?php
-        function limit_words($string, $word_limit){
-          $words = explode(" ", $string);
-          return implode(" ", array_splice($words, 0, $word_limit));
-        }
-
-        foreach ($data -> result_array() as $i) :
-          $id       = $i['id'];
-          $judul    = $i['title'];
-          $author   = $i['author'];
-          $content  = $i['content'];
-          $datepost = $i['datepost'];
-          $image    = $i['image'];
-        
-      ?>
-    <div class="col-sm-6 col-md-3"><br>
-      <div class="thumbnail">
-        <img src="<?php echo base_url().'assets/img/'.$image;?>" alt="Gambar" width="150px" height="150px">
-        <div class="caption">
-          <h3><?php echo $judul; ?></h3>
-          <p>
-            <?php echo limit_words($content,20);?> <br>
-            <a href="<?php echo base_url().'Artikel_Controller/view/'.$id;?>">Selengkapnya ...</a>
-          </p>
-          <p><a href="<?php echo site_url('Artikel_Controller/edit_news/'.$i['id'])?>" class="btn btn-primary" role="button">Edit</a> <a href="<?php echo site_url('Artikel_Controller/delete_news/'.$i['id']) ?>" class="btn btn-default" role="button">Hapus</a></p>
+  <section id="contact">
+    <div class="container">  
+      <div class="col-xs-12 col-sm-9 col-md-9">
+        <div class="well well-sm">
+            <center><h2><?php echo $data['title']?></h2></center>
+            <p align="left"><b>Datepost : <?php echo $data['datepost'] ?></b></p>
+            <p align="right"><b>Posting by : <?php echo $data['author']?></b></p>
+            <hr>
+            <center>
+              <img src="<?php echo base_url().'assets/img/'.$data['image'];?>" width="200px" height="200px">
+            </center>
+            <br>
+            <p>
+              <?php echo $data['content']; ?>
+            </p>
         </div>
       </div>
     </div>
-    <?php endforeach;?>
-  </div>
-
-</section>
+  </section>
 </div>
+
 </body>
   <script src="<?=base_url()?>assets/bootstrap/js/jquery.js"></script>
   <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
