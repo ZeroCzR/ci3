@@ -11,6 +11,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="<?=base_url()?>assets/bootstrap/js/validation.js"></script>
+
+  <!-- Data Tables -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
 </head>
 <body>
 
@@ -32,6 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url()?>Kategori_Controller/">Kategori</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url()?>Datatable_Controller/">DataTables</a>
         </li>
       </ul>
     </div>

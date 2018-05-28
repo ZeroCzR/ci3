@@ -1,36 +1,19 @@
 <?php 
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Artikel_Controller extends CI_Controller {
+	class Datatable_Controller extends CI_Controller {
 
 	    public function __construct(){
 	    	parent::__construct();
 	    	$this->load->model('Artikel_Model');
-            $this->load->helper('url_helper','date','file','pagination');
-            $this->load->library('pagination');
+            $this->load->helper('url_helper','date','file');
 	    }
 
 	    public function index()
         {
-            $limit_per_page = 3;
-
-            $start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
-
-            $total_records = $this->Artikel_Model->get_total_news();
-
-            $data["all_news"] = $this->Artikel_Model->get_articles($limit_per_page, $start_index);
-
-            $config['base_url'] = base_url() . 'Artikel_Controller/index';
-            $config['total_rows'] = $total_records;
-            $config['per_page'] = $limit_per_page;
-            $config["uri_segment"] = 3;
-
-            $this->pagination->initialize($config);
-
-            $data["links"] = $this->pagination->create_links();
-
+            $x['data'] = $this->Artikel_Model->get_all_news();
             $this->load->view('Template');
-            $this->load->view('blog/Articel_View', $data);
+            $this->load->view('datatable/Datatable_view', $x);
         }
 
         public function view()

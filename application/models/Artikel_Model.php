@@ -13,6 +13,15 @@
 			return $query;
 		}
 
+		public function get_total_news(){
+			return $this->db->get('artikel')->num_rows();
+		}
+
+		public function get_articles($limit = null, $offset = null){
+			 $this->db->limit($limit, $offset);
+          return $this->db->get('artikel');
+		}
+
 		public function get_news_by_id($idN = 0){
 			$query = $this->db->get_where('artikel', array('id' => $idN));
 			return $query->row_array();

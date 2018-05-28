@@ -12,7 +12,7 @@
           return implode(" ", array_splice($words, 0, $word_limit));
         }
 
-        foreach ($data -> result_array() as $i) :
+        foreach ($all_news -> result_array() as $i) :
           $id       = $i['id'];
           $judul    = $i['title'];
           $author   = $i['author'];
@@ -36,6 +36,9 @@
     </div>
     <?php endforeach;?>
   </div>
+  <div class="container" align="center">
+      <?php echo $links; ?>
+    </div>
 
 </section>
 </div>
