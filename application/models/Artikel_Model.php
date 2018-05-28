@@ -31,5 +31,33 @@
 			$this->db->where('id', $idN);
 			return $this->db->delete('artikel');
 		}
+
+		public function generate_cat_dropdown() {
+	        // Mendapatkan data ID dan nama kategori saja
+	        $this->db->select ('
+	            kategori.id_kategori,
+	            kategori.nama_kategori
+	        ');
+
+	        // Urut abjad
+	        $this->db->order_by('nama_kategori');
+
+	        $result = $this->db->get('kategori');
+	        
+	        // bikin array
+	        // please select berikut ini merupakan tambahan saja agar saat pertama
+	        // diload akan ditampilkan text please select.
+	        $dropdown[''] = 'Please Select';
+
+	        if ($result->num_rows() > 0) {
+	            
+	            foreach ($result->result_array() as $row) {
+	                // Buat array berisi 'value' (id kategori) dan 'nama' (nama kategori)
+	                $dropdown[$row['id_kategori']] = $row['nama_kategori'];
+	            }
+	        }
+
+	        return $dropdown;
+	    }
 	}
 ?>

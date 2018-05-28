@@ -5,7 +5,9 @@ class HomeCTRL extends CI_Controller {
 
 	
 	public function home(){
-		redirect(base_url().'pegawai/1');
+		$data['title'] = "Home";
+		$data['content'] = "Public/home.php";	
+		$this->load->view('Template', $data);
 	}
 
 	public function news()
@@ -19,13 +21,6 @@ class HomeCTRL extends CI_Controller {
 	{
 		$data['title'] = "About";
 		$data['content'] = "Public/about.php";	
-		$this->load->view('Template', $data);
-	}
-
-	public function contact()
-	{
-		$data['title'] = "Contact";
-		$data['content'] = "Public/contact.php";	
 		$this->load->view('Template', $data);
 	}
 }

@@ -4,41 +4,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title><?=$title?></title>
+  <title>Code Igniter</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="<?=base_url()?>assets/bootstrap/js/validation.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<?=base_url()?>">Aldrey Safwa</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Aldrey Safwa</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="<?php echo site_url()?>Welcome/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url()?>About_Controller/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url()?>Artikel_Controller/">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url()?>Kategori_Controller/">Kategori</a>
+        </li>
+      </ul>
     </div>
-    <!-- Collection of nav links and other content for toggling -->
-    <div id="navbarCollapse" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-           <li <?php if($title=="Home"){ echo "class='active'"; }?>><a href="<?=base_url()?>home">Home</a></li>
-          <li <?php if($title=="Contact"){ echo "class='active'"; }?>><a href="<?=base_url()?>contact">Contact</a></li>
-           <li <?php if($title=="About"){ echo "class='active'"; }?>><a href="<?=base_url()?>about">About</a></li>
-          <li><a href="<?php echo site_url()?>Artikel_Controller/">News</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><i class="glyphicon glyphicon-user"></i> Aldrey Safwa</a></li>
-        </ul>
-    </div>
-</nav>
+  </nav>
 <div class="container">
-  <?php if($content!=null){ include $content;}?>
+
 </div>
 
 </body>
-  <script src="<?=base_url()?>assets/bootstrap/js/jquery.js"></script>
-  <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
 </html>
