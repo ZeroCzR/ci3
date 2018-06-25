@@ -61,7 +61,8 @@ class User_Controller extends CI_Controller{
                 $user_data = array(
                     'id_user' => $id_user,
                     'username' => $username,
-                    'logged_in' => true
+                    'logged_in' => true,
+                    'level' => $this->User_Model->get_user_level($id_user)
                 );
 
                 $this->session->set_userdata($user_data);
@@ -69,7 +70,7 @@ class User_Controller extends CI_Controller{
                 // Set message
                 $this->session->set_flashdata('user_loggedin', 'Anda sudah login');
 
-                redirect('Artikel_Controller');
+                redirect('User_Controller/dashboard');
             } else {
                 // Set message
                 $this->session->set_flashdata('login_failed', 'Login invalid');
@@ -90,6 +91,22 @@ class User_Controller extends CI_Controller{
         $this->session->set_flashdata('user_loggedout', 'Anda sudah log out');
 
         redirect('User_Controller/login_user');
+    }
+
+    public function dashboard(){
+
+        if(!$this->session->userdata('logged_in')){
+            redirect('User_Controller/login_user');
+        }
+
+        $id_user = $this->session->userdata('username');
+
+        // Dapatkan detail user
+        $data['user'] = $this->User_Model->get_user_details($id_user);
+
+        // Load dashboard
+        $this->load->view('Template');
+        $this->load->view('user/dashboard_view', $data);
     }
 
 }
