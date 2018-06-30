@@ -93,6 +93,11 @@ class User_Controller extends CI_Controller{
         redirect('User_Controller/login_user');
     }
 
+    public function get_userdata(){
+        $userData = $this->session->userdata();
+        return $userData;
+    }
+
     public function dashboard(){
 
         if(!$this->session->userdata('logged_in')){
@@ -104,9 +109,19 @@ class User_Controller extends CI_Controller{
         // Dapatkan detail user
         $data['user'] = $this->User_Model->get_user_details($id_user);
 
-        // Load dashboard
-        $this->load->view('Template');
-        $this->load->view('user/dashboard_view', $data);
+        $userData = $this->get_userdata();
+
+        if ($userData['level'] === '1'){
+            $this->load->view('Template');
+            $this->load->view('user/dashboard_view', $data);
+        } elseif ($userData['level'] === '2'){
+            $this->load->view('Template');
+            $this->load->view('user/user1_view', $data);
+        } elseif ($userData['level'] === '3') {
+            $this->load->view('Template');
+            $this->load->view('user/user2_view', $data);
+        }
+
     }
 
 }

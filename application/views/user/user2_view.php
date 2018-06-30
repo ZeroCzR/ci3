@@ -12,19 +12,7 @@
 	   				<img src="../assets/img/icon/2.png" class="img-fluid"> <br><br>
 		   			<h4>Create News</h4>
 	   			</a>
-   			</div>
-	   		<div class="col-sm">
-	   			<a href="<?php echo base_url().'Kategori_Controller/'?>">
-	   				<img src="../assets/img/icon/1.png" class="img-fluid"> <br><br>
-	   				<h4>Category Data</h4>
-	   			</a>
-	   		</div>  
-        <div class="col-sm">
-          <a href="<?php echo base_url().'Datatable_Controller/'?>">
-            <img src="../assets/img/icon/3.png" class="img-fluid"> <br><br>
-            <h4>DataTable</h4>
-          </a>
-        </div>
+   			</div> 
 	   		<div class="col-sm"></div>
 	    </div>
    </div>

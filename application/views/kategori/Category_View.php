@@ -1,8 +1,7 @@
 <div class="container">
 
 <section id="contact">
-  <div class="container"><br>
-    <a href="<?php echo base_url().'Kategori_Controller/create'?>" class="btn btn-danger">Add Category</a>
+  <div class="container">
   
   <div class="row">
       <?php foreach ($kategori as $key) :?>

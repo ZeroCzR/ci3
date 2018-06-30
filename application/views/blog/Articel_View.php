@@ -1,9 +1,6 @@
 <div class="container">
 
 <section id="contact">
-  <div class="container">
-    <br>
-    <a href="<?php echo base_url().'Artikel_Controller/insert_news'?>" class="btn btn-danger">Add News</a>
   
   <div class="row">
       <?php

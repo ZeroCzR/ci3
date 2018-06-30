@@ -19,12 +19,6 @@
 	   				<h4>Category Data</h4>
 	   			</a>
 	   		</div>  
-        <div class="col-sm">
-          <a href="<?php echo base_url().'Datatable_Controller/'?>">
-            <img src="../assets/img/icon/3.png" class="img-fluid"> <br><br>
-            <h4>DataTable</h4>
-          </a>
-        </div>
 	   		<div class="col-sm"></div>
 	    </div>
    </div>

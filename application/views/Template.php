@@ -38,25 +38,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="nav-item">
           <a class="nav-link" href="<?php echo site_url()?>Artikel_Controller/">News</a>
         </li>
+      
+      <?php if($this->session->userdata('logged_in')) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url()?>Kategori_Controller/">Kategori</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url()?>Datatable_Controller/">DataTables</a>
+          <a class="nav-link" href="<?php echo site_url()?>User_Controller/dashboard">My Dashboard</a>
         </li>
       </ul>
+        <div class="btn-group" role="group" aria-label="Data baru">
+          <?php echo anchor('User_Controller/logout', 'Logout', array('class' => 'btn btn-outline-dark')); ?>
+        </div>
+      <?php endif; ?>
+
       <?php if(!$this->session->userdata('logged_in')) : ?>
         <div class="btn-group" role="group" aria-label="Data baru">
           <?php echo anchor('User_Controller/register_user', 'Register', array('class' => 'btn btn-outline-dark')); ?>
           <?php echo anchor('User_Controller/login_user', 'Login', array('class' => 'btn btn-outline-dark')); ?>
-        </div>
-      <?php endif; ?>
-
-      <?php if($this->session->userdata('logged_in')) : ?>
-        <div class="btn-group" role="group" aria-label="Data baru">
-          <?php echo anchor('Artikel_Controller/insert_news', 'Artikel Baru', array('class' => 'btn btn-outline-dark')); ?>
-          <?php echo anchor('Kategori_Controller/create', 'Kategori Baru', array('class' => 'btn btn-outline-dark')); ?>
-          <?php echo anchor('User_Controller/logout', 'Logout', array('class' => 'btn btn-outline-dark')); ?>
         </div>
       <?php endif; ?>
     </div>
